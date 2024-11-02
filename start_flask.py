@@ -25,10 +25,10 @@ def start_flask():
     flask_thread = threading.Thread(target=run_flask)
     flask_thread.start()
     
-    time.sleep(2)  # Attendre un moment pour s'assurer que Flask a démarré
-    webbrowser.open("http://127.0.0.1:5000/")  # Ouvre la page HTML dans le navigateur
+ #   time.sleep(2)  # Attendre un moment pour s'assurer que Flask a démarré
+ #   webbrowser.open("http://127.0.0.1:5000/")  # Ouvre la page HTML dans le navigateur
 
-    return "Application Flask démarrée.", 200
+ #   return "Application Flask démarrée.", 200
 
 if __name__ == "__main__":
     # Lancer le serveur Flask pour écouter les requêtes de démarrage
