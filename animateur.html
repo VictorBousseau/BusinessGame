@@ -6,7 +6,7 @@
     <title>Accueil Animateur</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="startFlaskApp()">
     <header>
         <nav class="navbar">
             <ul>
@@ -18,11 +18,27 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <div class="container">
         <h2>Bienvenue sur la page d'accueil de l'animateur</h2>
-    </main>
+        <p>Accédez aux différentes sections via le ruban de navigation en haut.</p>
+    </div>
+
+    <h1>Bienvenue sur la page de classement</h1>
+    <iframe id="flaskFrame" src="http://127.0.0.1:5000/" width="100%" height="800px" style="border:none;"></iframe>
+
+    <script>
+        function startFlaskApp() {
+            // Demande de démarrer l'application Flask
+            fetch("http://localhost:8000/start_flask")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors du lancement de Flask : ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.error("Erreur de lancement de Flask :", error));
+        }
+    </script>
 </body>
 </html>
-
-
-
