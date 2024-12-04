@@ -1,4 +1,4 @@
 @echo off
-start py start_flask.py
+start /B py start_flask.py
 timeout /t 2
 start https://victorbousseau.github.io/BusinessGame/
