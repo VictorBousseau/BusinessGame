@@ -1,6 +1,8 @@
+#Application Python Accueil animateur
 from flask import Flask, render_template_string
 import matplotlib
 matplotlib.use('Agg')  # Utiliser le backend Agg pour éviter Tkinter
+
 import matplotlib.pyplot as plt
 from io import BytesIO
 import random
@@ -25,13 +27,13 @@ def create_bar_chart(titre, valeurs, labels):
     plt.xlabel("Équipes")
     plt.ylabel(titre)
     plt.tight_layout()
-    
+
     # Sauvegarder l'image dans un flux de mémoire
     img = BytesIO()
     plt.savefig(img, format='png')
     img.seek(0)
     plt.close()
-    
+
     # Encoder l'image en base64 pour l'intégrer dans le HTML
     return base64.b64encode(img.getvalue()).decode()
 
@@ -45,20 +47,54 @@ def accueil():
 
     # HTML pour afficher les images
     html = f"""
-    <h1>Bienvenue sur l'Application de Classement des Équipes</h1>
-    <h2>Classement par Trésorerie</h2>
-    <img src="data:image/png;base64,{tresorerie_img}" alt="Classement par trésorerie">
-
-    <h2>Classement par Chiffre d'Affaires</h2>
-    <img src="data:image/png;base64,{chiffre_affaires_img}" alt="Classement par chiffre d'affaires">
-
-    <h2>Classement par Nombre d'Employés</h2>
-    <img src="data:image/png;base64,{employes_img}" alt="Classement par nombre d'employés">
-
-    <h2>Classement par Bénéfices</h2>
-    <img src="data:image/png;base64,{benefices_img}" alt="Classement par bénéfices">
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Classement des Équipes</title>
+        <style>
+            .grid-container {{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px; /* Espace entre les graphiques */
+                justify-content: center;
+            }}
+            .grid-item {{
+                flex: 1 1 calc(50% - 5px); /* Chaque graphique prend 50% de la largeur */
+                max-width: calc(50% - 5px);
+                box-sizing: border-box;
+            }}
+            img {{
+                max-width: 100%;
+                height: auto;
+            }}
+        </style>
+    </head>
+    <body>
+        <h1>Bienvenue sur l'Application de Classement des Équipes</h1>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h2>Classement par Trésorerie</h2>
+                <img src="data:image/png;base64,{tresorerie_img}" alt="Classement par trésorerie">
+            </div>
+            <div class="grid-item">
+                <h2>Classement par Chiffre d'Affaires</h2>
+                <img src="data:image/png;base64,{chiffre_affaires_img}" alt="Classement par chiffre d'affaires">
+            </div>
+            <div class="grid-item">
+                <h2>Classement par Nombre d'Employés</h2>
+                <img src="data:image/png;base64,{employes_img}" alt="Classement par nombre d'employés">
+            </div>
+            <div class="grid-item">
+                <h2>Classement par Bénéfices</h2>
+                <img src="data:image/png;base64,{benefices_img}" alt="Classement par bénéfices">
+            </div>
+        </div>
+    </body>
+    </html>
     """
     return render_template_string(html)
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)  # Assurez-vous que Flask écoute sur le port 5000
+    app.run(debug=True)

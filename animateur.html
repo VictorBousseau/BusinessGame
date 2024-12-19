@@ -1,9 +1,9 @@
+<!-- Page animateur qui permet garce au "navbar" d'acceder aux autres pages du programme et qui appelle notre appli python à l'URL http://127.0.0.1:5000/-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil Animateur</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body onload="startFlaskApp()">
@@ -18,27 +18,8 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h2>Bienvenue sur la page d'accueil de l'animateur</h2>
-        <p>Accédez aux différentes sections via le ruban de navigation en haut.</p>
-    </div>
 
-    <h1>Bienvenue sur la page de classement</h1>
     <iframe id="flaskFrame" src="http://127.0.0.1:5000/" width="100%" height="800px" style="border:none;"></iframe>
 
-    <script>
-        function startFlaskApp() {
-            // Demande de démarrer l'application Flask
-            fetch("http://localhost:8000/start_flask")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erreur lors du lancement de Flask : ' + response.statusText);
-                    }
-                    return response.text();
-                })
-                .then(data => console.log(data))
-                .catch(error => console.error("Erreur de lancement de Flask :", error));
-        }
-    </script>
 </body>
 </html>

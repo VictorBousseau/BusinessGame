@@ -1,3 +1,4 @@
+#Ce code permet de démarrer flask ce qui permet de demarrer une application python "automatiquement"
 import subprocess
 import requests
 import threading
@@ -24,11 +25,6 @@ def start_flask():
     # Démarre l'application Flask dans un thread séparé
     flask_thread = threading.Thread(target=run_flask)
     flask_thread.start()
-    
- #   time.sleep(2)  # Attendre un moment pour s'assurer que Flask a démarré
- #   webbrowser.open("http://127.0.0.1:5000/")  # Ouvre la page HTML dans le navigateur
-
- #   return "Application Flask démarrée.", 200
 
 if __name__ == "__main__":
     # Lancer le serveur Flask pour écouter les requêtes de démarrage
