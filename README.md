@@ -12,3 +12,10 @@ Quelques choses à faire avant de lancer l'apllication :
     Remplacer le "py start_flask.py" par 
     ""Chemin vers python.exe C:\..\python.exe" "Chemin vers le start flask C:\...\start_flask.py""
     
+
+
+Il y a un bug dans le programme que nous n'avons pas encore pu corriger, l'application Python ne s'exécute plus automatiquement. En attendant un correctif, il faut lancer le programme à la main pour qu'il s'affiche dans l'application. Pour cela : 
+     - Ouvrir Anaconda Prompt
+     - Naviger dans les dossiers jusqu'au dossier où sont les fichiers (commande : cd *chemin fichier*)
+     - Executer le programme avec la commande : python AppliPythonPageAccueil.py
+     
