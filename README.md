@@ -6,7 +6,7 @@ Quelques choses à faire avant de lancer l'apllication :
     Pour connaitre la version de python, dans anaconda promp taper : python --version
 
     - Installer Flask
-    Dans anaconda promp : pip install flask
+    Dans anaconda prompt : pip install flask
 
     - Dans le fichier start_app.bat :
     Remplacer le "py start_flask.py" par 
